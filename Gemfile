@@ -5,6 +5,7 @@ gemspec
 
 group :development, :test do
   gem 'rspec'
+  gem 'timecop'
   gem "simplecov", :require => false
   gem 'coveralls', :require => false
 end
