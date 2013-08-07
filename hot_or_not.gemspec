@@ -8,8 +8,11 @@ Gem::Specification.new do |spec|
   spec.version       = HotOrNot::VERSION
   spec.authors       = ["Krists Ozols"]
   spec.email         = ["krists@iesals.lv"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Very simple and fast hit and popularity counter using Redis sorted sets.}
+  spec.summary       = %q{
+    Very simple and fast hit and popularity counter using Redis sorted sets.
+    It solves problem where you need to know most popular article or project in last X days.
+  }
   spec.homepage      = ""
   spec.license       = "MIT"
 

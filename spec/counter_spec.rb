@@ -67,10 +67,21 @@ describe HotOrNot::Counter do
   end
 
   describe "#top_records" do
-    it "should get top records in period" do
-      Timecop.freeze(Date.parse('2013-07-29')) do
-        connection.should_receive(:zrevrange).with("hot_or_not:article:date:2013-07-29", 0, 4)
-        subject.top_records(5)
+    context "when time not specified" do
+      it "should get top records in period" do
+        Timecop.freeze(Date.parse('2013-07-29')) do
+          connection.should_receive(:zrevrange).with("hot_or_not:article:date:2013-07-29", 0, 4)
+          subject.top_records(5)
+        end
+      end
+    end
+
+    context "when time is specified" do
+      it "should get top records in period" do
+        Timecop.freeze(Date.parse('2013-07-29')) do
+          connection.should_receive(:zrevrange).with("hot_or_not:article:date:2013-02-22", 0, 2)
+          subject.top_records(3, Date.parse('2013-02-22'))
+        end
       end
     end
   end
