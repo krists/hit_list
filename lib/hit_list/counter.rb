@@ -1,4 +1,4 @@
-module HotOrNot
+module HitList
   class Counter
     DEFAULT_NAMESPACE = 'hot_or_not'
     DEFAULT_DAYS_OF_INTEREST = 7
@@ -10,8 +10,8 @@ module HotOrNot
     #
     # ==== Examples
     #
-    #   counter = HotOrNot::Counter.new(connection, 'articles', 7)
-    #   counter = HotOrNot::Counter.new(connection, 'articles')
+    #   counter = HitList::Counter.new(connection, 'articles', 7)
+    #   counter = HitList::Counter.new(connection, 'articles')
     def initialize(connection, name, days_of_interest = DEFAULT_DAYS_OF_INTEREST)
       @connection, @name, @days_of_interest = connection, name, days_of_interest
     end

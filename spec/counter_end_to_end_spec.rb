@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe HotOrNot::Counter do
+describe HitList::Counter do
   let(:real_connection) { Redis.new }
   let(:name) { 'article' }
   let(:days_of_interest) { 7 }

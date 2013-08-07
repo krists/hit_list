@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'hot_or_not/version'
+require 'hit_list/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "hot_or_not"
-  spec.version       = HotOrNot::VERSION
+  spec.name          = "hit_list"
+  spec.version       = HitList::VERSION
   spec.authors       = ["Krists Ozols"]
   spec.email         = ["krists@iesals.lv"]
   spec.description   = %q{Very simple and fast hit and popularity counter using Redis sorted sets.}
   spec.summary       = %q{It solves problem where you need to know most popular article or project in last X days.}
-  spec.homepage      = "https://github.com/krists/hot_or_not"
+  spec.homepage      = "https://github.com/krists/hit_list"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

@@ -12,4 +12,4 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require "fakeredis"
 require 'timecop'
-require 'hot_or_not'
+require 'hit_list'
