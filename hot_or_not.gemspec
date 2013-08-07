@@ -9,11 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Krists Ozols"]
   spec.email         = ["krists@iesals.lv"]
   spec.description   = %q{Very simple and fast hit and popularity counter using Redis sorted sets.}
-  spec.summary       = %q{
-    Very simple and fast hit and popularity counter using Redis sorted sets.
-    It solves problem where you need to know most popular article or project in last X days.
-  }
-  spec.homepage      = ""
+  spec.summary       = %q{It solves problem where you need to know most popular article or project in last X days.}
+  spec.homepage      = "https://github.com/krists/hot_or_not"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -23,4 +20,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec", '~> 2.13.0'
+  spec.add_development_dependency 'timecop', '~> 0.6.1'
+  spec.add_development_dependency "fakeredis", '~> 0.4.2'
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency 'coveralls'
 end
