@@ -22,13 +22,13 @@ describe HitList::Counter do
 
   describe "#namespace" do
     it "returns default namespace for counter keys" do
-      subject.namespace.should eq("hot_or_not")
+      subject.namespace.should eq("hit_list")
     end
   end
 
   describe "#total_hits" do
     it "calls #get to connection with key like '<namespace>:<name>:total:<id>'" do
-      connection.should_receive(:get).with('hot_or_not:article:total:12')
+      connection.should_receive(:get).with('hit_list:article:total:12')
       subject.total_hits(12)
     end
   end
@@ -46,7 +46,7 @@ describe HitList::Counter do
 
   describe "#increment_total_hits!" do
     it "calls #incr to connection with key like '<namespace>:<name>:total:<id>'" do
-      connection.should_receive(:incr).with('hot_or_not:article:total:14')
+      connection.should_receive(:incr).with('hit_list:article:total:14')
       subject.increment_total_hits!(14)
     end
   end
@@ -54,13 +54,13 @@ describe HitList::Counter do
   describe "#increment_rank!" do
     it "calls #zincrby on connection with key like '<namespace>:<name>:date:<date>:<id>' multiple times with right dates" do
       Timecop.freeze(Date.parse('2013-07-29')) do
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-07-29", 1, 66)
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-07-30", 1, 66)
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-07-31", 1, 66)
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-08-01", 1, 66)
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-08-02", 1, 66)
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-08-03", 1, 66)
-        connection.should_receive(:zincrby).with("hot_or_not:article:date:2013-08-04", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-07-29", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-07-30", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-07-31", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-08-01", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-08-02", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-08-03", 1, 66)
+        connection.should_receive(:zincrby).with("hit_list:article:date:2013-08-04", 1, 66)
         subject.increment_rank!(66)
       end
     end
@@ -70,7 +70,7 @@ describe HitList::Counter do
     context "when time not specified" do
       it "should get top records in period" do
         Timecop.freeze(Date.parse('2013-07-29')) do
-          connection.should_receive(:zrevrange).with("hot_or_not:article:date:2013-07-29", 0, 4)
+          connection.should_receive(:zrevrange).with("hit_list:article:date:2013-07-29", 0, 4)
           subject.top_records(5)
         end
       end
@@ -79,7 +79,7 @@ describe HitList::Counter do
     context "when time is specified" do
       it "should get top records in period" do
         Timecop.freeze(Date.parse('2013-07-29')) do
-          connection.should_receive(:zrevrange).with("hot_or_not:article:date:2013-02-22", 0, 2)
+          connection.should_receive(:zrevrange).with("hit_list:article:date:2013-02-22", 0, 2)
           subject.top_records(3, Date.parse('2013-02-22'))
         end
       end
