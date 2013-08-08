@@ -1,6 +1,6 @@
 module HitList
   class Counter
-    DEFAULT_NAMESPACE = 'hot_or_not'
+    DEFAULT_NAMESPACE = 'hit_list'
     DEFAULT_DAYS_OF_INTEREST = 7
     SECONDS_IN_DAY = 86400
     DATE_PARTIAL_FORMAT = "%Y-%m-%d"
