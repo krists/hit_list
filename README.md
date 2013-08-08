@@ -3,6 +3,9 @@
 Very simple and fast hit and popularity counter using Redis sorted sets.
 It solves problem where you need to know most popular article or project in last X days.
 
+[![Build Status](https://travis-ci.org/krists/hit_list.png?branch=master)](https://travis-ci.org/krists/hit_list)
+[![Gem Version](https://badge.fury.io/rb/hit_list.png)](http://badge.fury.io/rb/hit_list)
+
 ## Installation
 
 Add this line to your application's Gemfile:
