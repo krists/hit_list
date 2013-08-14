@@ -20,8 +20,44 @@ And then execute:
 Or install it yourself as:
 
     $ gem install hit_list
+## Usage with Rails
 
-## Usage
+    # Set Redis connection in initializer
+    HitList::RailsModelExtension.redis_connection= Redis.new(host: '127.0.0.1', port: 6380)
+
+    # If you don't do this HitList will attempt to create one on its own with default arguments
+    # Equivalent to:
+    HitList::RailsModelExtension.redis_connection= Redis.new
+
+    # include in models..
+    class Article < ActiveRecord::Base
+      include HitList::RailsModelExtension
+      # ..
+    end
+
+    # Use..
+    Article.top_records(3) # => ["1", "43", "13"]
+    
+    article = Article.first
+    article.total_hits # => 4
+    article.increment_hit_counter! # Increments total hits counter and ranking for days
+    article.increment_only_total_hits!
+    article.increment_only_rank!
+
+    # When you want to preserve rank stats for more than default 7 days you have to overwrite method hit_list_day_count
+    class Article < ActiveRecord::Base
+      include HitList::RailsModelExtension
+      
+      def hit_list_day_count
+        14
+      end
+
+      # ..
+
+    end
+   
+
+## Usage without Rails
 
     # connect to redis db
     redis_connection = Redis.new(:host => "10.0.1.1", :port => 6380)
