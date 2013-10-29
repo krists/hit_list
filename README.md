@@ -100,3 +100,7 @@ If you want to preserve ranking for more than 7 days you have to provide day cou
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/krists/hit_list/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
