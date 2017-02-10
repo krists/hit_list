@@ -20,9 +20,9 @@ describe HitList::Counter do
       subject.hit!(44)
       subject.hit!(44)
       subject.hit!(44)
-      subject.total_hits(22).should eq(2)
-      subject.total_hits(7).should eq(1)
-      subject.total_hits(44).should eq(3)
+      expect(subject.total_hits(22)).to eq(2)
+      expect(subject.total_hits(7)).to eq(1)
+      expect(subject.total_hits(44)).to eq(3)
       Timecop.return
     end
   end
@@ -43,11 +43,11 @@ describe HitList::Counter do
       subject.hit!(7)
       subject.hit!(7)
       subject.hit!(7)
-      subject.top_records(2).should eq(["22", "7"])
+      expect(subject.top_records(2)).to eq(["22", "7"])
       Timecop.travel(Date.parse('2013-01-25'))
-      subject.top_records(2).should eq(["22", "7"])
+      expect(subject.top_records(2)).to eq(["22", "7"])
       Timecop.travel(Date.parse('2013-01-28'))
-      subject.top_records(2).should eq(["7", "22"])
+      expect(subject.top_records(2)).to eq(["7", "22"])
       Timecop.return
     end
   end
