@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "hit_list"
   spec.version       = HitList::VERSION
   spec.authors       = ["Krists Ozols"]
-  spec.email         = ["krists@iesals.lv"]
+  spec.email         = ["krists.ozols@gmail.com"]
   spec.description   = %q{Very simple and fast hit and popularity counter using Redis sorted sets.}
   spec.summary       = %q{It solves problem where you need to know most popular article or project in last X days.}
   spec.homepage      = "https://github.com/krists/hit_list"

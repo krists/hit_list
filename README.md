@@ -20,6 +20,7 @@ And then execute:
 Or install it yourself as:
 
     $ gem install hit_list
+    
 ## Usage with Rails
 
     # Set Redis connection in initializer
@@ -37,7 +38,7 @@ Or install it yourself as:
 
     # Use..
     Article.top_records(3) # => ["1", "43", "13"]
-    
+
     article = Article.first
     article.total_hits # => 4
     article.increment_hit_counter! # Increments total hits counter and ranking for days
@@ -47,7 +48,7 @@ Or install it yourself as:
     # When you want to preserve rank stats for more than default 7 days you have to overwrite method hit_list_day_count
     class Article < ActiveRecord::Base
       include HitList::RailsModelExtension
-      
+
       def hit_list_day_count
         14
       end
@@ -55,7 +56,7 @@ Or install it yourself as:
       # ..
 
     end
-   
+
 
 ## Usage without Rails
 
@@ -92,15 +93,3 @@ If you want to preserve ranking for more than 7 days you have to provide day cou
     # Preserve rankings for 2 weeks
     counter = HitList::Counter.new(connection, 'articles', 14)
     counter.hit!('something')
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/krists/hit_list/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
