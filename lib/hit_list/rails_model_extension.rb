@@ -21,7 +21,7 @@ module HitList::RailsModelExtension
     module InstanceMethods
 
       def hit_list_day_count
-        7
+        HitList::Counter::DEFAULT_DAYS_OF_INTEREST
       end
 
       def total_hits

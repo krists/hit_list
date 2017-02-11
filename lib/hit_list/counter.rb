@@ -69,8 +69,9 @@ module HitList
 
     def date_partials
       partials = []
+      now = Time.now
       0.upto(days_of_interest - 1) do |index|
-        partials << (Time.now + (index * SECONDS_IN_DAY)).strftime(DATE_PARTIAL_FORMAT)
+        partials << (now + (index * SECONDS_IN_DAY)).strftime(DATE_PARTIAL_FORMAT)
       end
       partials.to_enum
     end
